@@ -1,64 +1,35 @@
-import nodemailer from 'nodemailer';
-(async () => {
-  const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
-    auth: {
-      user: "benchorfihajar@gmail.com",
-      pass: "abcd@669103", // Replace with your actual app password
-    },
-  });
+import nodemailer from "nodemailer";
 
-  const mailOptions = {
-    from: "benchorfihajar@gmail.com",
-    to: "benchorfihajar@gmail.com",
-    subject: "Test Email",
-    text: "This is a test email from Nodemailer.",
-  };
+export default async function handler(req, res) {
+  if (req.method === "POST") {
+    const { name, email, subject, message } = req.body;
 
-  try {
-    const info = await transporter.sendMail(mailOptions);
-    console.log("Email sent: ", info);
-  } catch (error) {
-    console.error("Error sending test email:", error);
-  }
-})();
-
-/* export async function POST(req) {
-  const { name, email,subject, message } = await req.json();
-
-  // Configure the transporter with Gmail SMTP settings
-  const transporter = nodemailer.createTransport({
-    host: process.env.EMAIL_HOST,
-    port: process.env.EMAIL_PORT,
-    secure: true,
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
-    },
-  });
-
-  const mailOptions = {
-    from: process.env.EMAIL_USER, // your Gmail address
-    to: process.env.EMAIL_USER,   // where you want to receive emails
-    subject:`${subject}`,
-    text: message,
-    html: `<p><strong>Name:</strong> ${name}</p>
-           <p><strong>Email:</strong> ${email}</p>
-           <p><strong>Message:</strong> ${message}</p>`,
-  };
-
-  try {
-    await transporter.sendMail(mailOptions);
-    return new Response(JSON.stringify({ message: 'Email sent successfully!' }), {
-      status: 200,
+    // Configurer Nodemailer pour Gmail ou un autre service SMTP
+    let transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL_USER, // Votre email
+        pass: process.env.EMAIL_PASS, // Mot de passe d'application
+      },
     });
-  } catch (error) {
-    console.error('Error sending email:', error);
-    return new Response(JSON.stringify({ error: 'Failed to send email' }), {
-      status: 500,
-    });
+
+    // Définir les options de l'e-mail
+    const mailOptions = {
+      from: email, // Expéditeur (adresse email du visiteur)
+      to: process.env.EMAIL_USER, // Votre email
+      subject: subject,
+      text: `Message de: ${name}\nEmail: ${email}\n\n${message}`,
+    };
+
+    try {
+      // Envoi de l'email
+      await transporter.sendMail(mailOptions);
+      res.status(200).json({ success: true, message: "Email envoyé avec succès" });
+    } catch (error) {
+      console.error("Erreur d'envoi d'email:", error);
+      res.status(500).json({ success: false, message: "Erreur lors de l'envoi de l'email" });
+    }
+  } else {
+    res.status(405).json({ message: "Méthode non autorisée" });
   }
 }
- */

@@ -19,6 +19,9 @@ const App = ({ Component, pageProps }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="HandheldFriendly" content="true" />
         <meta name="author" content="bslthemes" />
+        <meta name="description" content="Portfolio of Hajar Benchorfi, a full-stack developer specializing in Laravel, JavaScript, React, and Node.js." />
+        <meta name="keywords" content="Hajar Benchorfi, Full-stack developer, React, Laravel, JavaScript, Portfolio, Digital Development" />
+   
         {/* Fonts */}
         <link
           rel="stylesheet"

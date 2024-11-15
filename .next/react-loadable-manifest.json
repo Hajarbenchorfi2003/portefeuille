@@ -10,11 +10,5 @@
     "files": [
       "static/chunks/src_components_PortfolioIsotope_js.js"
     ]
-  },
-  "work-single\\[uid].js -> ../../src/components/WorkSingleISotope": {
-    "id": "work-single\\[uid].js -> ../../src/components/WorkSingleISotope",
-    "files": [
-      "static/chunks/src_components_WorkSingleISotope_js.js"
-    ]
   }
 }

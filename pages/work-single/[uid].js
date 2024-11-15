@@ -13,14 +13,12 @@ const WorkSingleISotope = dynamic(() => import('../../src/components/WorkSingleI
 });
 
 const WorkSingle = () => {
-  const [videoToggle, setVideoToggle] = useState(false);
   const router = useRouter();
   const { uid } = router.query;  // Récupérer l'UID de l'URL
 
   const [project, setProject] = useState(null);
   const [loading, setLoading] = useState(true);
 console.log(project);
-
   // Effet secondaire qui s'exécute lorsque l'UID change dans l'URL
   useEffect(() => {
     if (uid) {
@@ -162,7 +160,6 @@ console.log(project);
           <WorkSingleISotope images={project.images} />
         </div>
       </div>
-      
        {/* Section - Description */}
        <section className="section section-inner">
         <div className="container">
@@ -183,30 +180,8 @@ console.log(project);
           </div>
         </div>
       </section>
-      
-      <div className="section section-inner m-video-large">
+
      
-  {project.videos && project.videos.length > 0 ? (  // Vérifier si des vidéos existent
-    <div className="video">
-      <div
-        className="img js-parallax"
-        style={{ backgroundImage: "url(assets/images/blog9.jpg)" }}  // Image de fond par défaut (facultatif)
-      />
-      <video
-        controls
-        className="video-player"
-        src={project.videos[0].video.url}  // Utilisation de la première vidéo dans le tableau
-        type="video/mp4"
-      >
-        Votre navigateur ne supporte pas les vidéos HTML5.
-      </video>
-    </div>
-  ) : (
-    <div className="no-video-message">
-      <p>Aucune vidéo disponible pour ce projet.</p>  {/* Message de remplacement si aucune vidéo */}
-    </div>
-  )}
-</div>
     </Layout>
   );
     }
