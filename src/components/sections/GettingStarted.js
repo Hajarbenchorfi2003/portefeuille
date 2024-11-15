@@ -77,15 +77,15 @@ const GettingStarted = () => {
                   <p><RichText render={profile.description} /></p>
                 </div>
                 <div className="social-links">
-                  <a target="_blank" rel="nofollow" href="#">
-                    <i aria-hidden="true" className="fab fa-twitter" />
-                  </a>
-                  <a target="_blank" rel="nofollow" href="#">
-                    <i aria-hidden="true" className="fab fa-dribbble" />
-                  </a>
-                  <a target="_blank" rel="nofollow" href="#">
-                    <i aria-hidden="true" className="fab fa-behance" />
-                  </a>
+                <a target="_blank" rel="nofollow" href="https://www.facebook.com/hajarbenchorfi">
+                  <i aria-hidden="true" className="fab fa-facebook" />
+                </a>
+                <a target="_blank" rel="nofollow" href="https://www.instagram.com/hajarben2411">
+                  <i aria-hidden="true" className="fab fa-instagram" />
+                </a>
+                <a target="_blank" rel="nofollow"   href="https://www.linkedin.com/in/hajar-benchorfi-72183a294">
+                <i aria-hidden="true" className="fab fa-linkedin" />
+                 </a>
                 </div>
               </div>
               <div className="bts">

@@ -73,6 +73,7 @@ import emailjs from 'emailjs-com';
       
         <section className="lui-section lui-gradient-bottom" id="contact-section">
  {/* Heading */}
+  <br/> <br/> 
  <div className="lui-heading">
    <div className="container">
      <div className="m-titles align-center">
