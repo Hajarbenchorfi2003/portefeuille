@@ -98,14 +98,7 @@ console.log(project);
                 </div>
               </div>
               <div className="col-xs-12 col-sm-12 col-md-4 col-lg-4 align-right">
-                <a
-                  target="_blank"
-                  href="https://bslthemes.com"
-                  className="btn scrolla-element-anim-1 scroll-animate"
-                  data-animate="active"
-                >
-                  <span>Live Preview</span>
-                </a>
+              
               </div>
             </div>
           </div>
@@ -160,6 +153,7 @@ console.log(project);
           <WorkSingleISotope images={project.images} />
         </div>
       </div>
+      
        {/* Section - Description */}
        <section className="section section-inner">
         <div className="container">

@@ -4,6 +4,9 @@ import { useEffect,useState } from "react";
 import { useRouter } from "next/router";
 import Layout from "../src/layouts/Layout";
 import { client } from "../src/utils/prismicClient";
+import PreLoader from "../src/layouts/PreLoader";
+
+
 
 const WorkSingleISotope = dynamic(
   () => import("../src/components/WorkSingleISotope"),
@@ -14,6 +17,12 @@ const WorkSingleISotope = dynamic(
 const WorkSingle = () => {
  
   const [project, setProject] = useState(null);
+  const [loader, setLoader] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoader(false);
+    }, 500);
+  }, []);
   const router = useRouter();
   const { uid } = router.query; // Récupérer l'UID du projet depuis l'URL
 
@@ -25,8 +34,10 @@ const WorkSingle = () => {
           const response = await client.getByUID("project", uid);
           console.log("Prismic response:", response);
           setProject(response);
+          setLoading(false);
         } catch (error) {
           console.error("Erreur de récupération du projet :", error);
+          setLoading(false); 
         }
       };
 
@@ -34,12 +45,14 @@ const WorkSingle = () => {
     }
   }, [uid]);
 
-  if (!project) {
-    return <div>Chargement...</div>;
-  }
+ 
   const [videoToggle, setVideoToggle] = useState(false);
+ 
+  }
   return (
     <Layout pageClassName={"portfolio-template"}>
+       {loader && <PreLoader />}
+       <Component {...pageProps} />
       {/* Section Started Heading */}
       <section className="section section-inner started-heading">
         {/* Heading */}
